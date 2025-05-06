@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Dawson_HW4</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Dawson_HW4.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Dawson_HW4</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ShoppingCart/ShoppingCartIndex">Cart</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+
+            <!-- Category Boxes -->
+            <div class="row text-center mt-5">
+                <!-- Beverages -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <a asp-area="" asp-page="/Categories/Beverages" class="stretched-link text-decoration-none">
+                                <h5 class="card-title">Beverages</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canned Foods -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <a asp-area="" asp-page="/Categories/CannedFoods" class="stretched-link text-decoration-none">
+                                <h5 class="card-title">CannedFoods</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dried Fruits -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <a asp-area="" asp-page="/Categories/DriedFruits" class="stretched-link text-decoration-none">
+                                <h5 class="card-title">Dried Fruits</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Condiments -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <a asp-area="" asp-page="/Categories/Condiments" class="stretched-link text-decoration-none">
+                                <h5 class="card-title">Condiments</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soups -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <a asp-area="" asp-page="/Categories/Soups" class="stretched-link text-decoration-none">
+                                <h5 class="card-title">Soups</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Category Boxes -->
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Dawson_HW4 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

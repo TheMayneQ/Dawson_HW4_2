@@ -1,0 +1,56 @@
+﻿@page
+@model Dawson_HW4.Pages.ShoppingCart.ShoppingCartIndexModel
+<h2>Your Shopping Cart</h2>
+
+<form method="post">
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (int i = 0; i < Model.CartItems.Count; i++)
+            {
+                <tr>
+                    <td>@Model.CartItems[i].ProductName</td>
+                    <td>
+                        <input type="number" min="0" asp-for="@Model.CartItems[i].QuantityToOrder" class="form-control" />
+                        <input asp-for="@Model.CartItems[i].CartID" type="hidden" />
+                        <input asp-for="@Model.CartItems[i].ProductID" type="hidden" />
+
+                    </td>
+
+                    <td>@Model.CartItems[i].StandardCost.ToString("c")</td>
+                    <td>@Model.CartItems[i].Subtotal.ToString("c")</td>
+
+                </tr>
+
+
+
+            }
+
+        </tbody>
+
+
+    </table>
+
+    <div class="text-end">
+
+        <strong>Total: </strong> @Model.CartTotal.ToString("c")
+
+    </div>
+
+
+    <button class="btn btm-primary" type="submit">Update Cart</button>
+
+
+
+
+</form>

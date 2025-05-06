@@ -1,0 +1,32 @@
+﻿@page
+@model Dawson_HW4.Pages.Categories.SoupsModel
+
+@{
+    ViewData["Title"] = "Soups"; 
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.ProdList != null && Model.ProdList.Any())
+{
+    <div class="row">
+        @foreach (var product in Model.ProdList)
+        {
+            <div class="col-md-4 mb-3">
+                
+                <a asp-page="/Products/Details" asp-route-id="@product.ProductID" class="card h-100 text-decoration-none text-dark">
+                    
+                    <img src="~/fruits.jpg" class="card-img-top" alt="@product.ProductName" />
+                    <div class="card-body">
+                        <h5 class="card-title">@product.ProductName</h5>
+                        
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No Soups found.</p>
+}
