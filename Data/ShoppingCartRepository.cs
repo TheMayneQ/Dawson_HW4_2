@@ -17,7 +17,7 @@ namespace Dawson_HW4.Data
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var cmd = new SqlCommand("spShoppingCartAddItem", connection);
+                var cmd = new SqlCommand("spShoppingCartAddItem2", connection);
 
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -81,6 +81,7 @@ namespace Dawson_HW4.Data
 
         public void UpdateCartItem(string cartID, int productID, int quantity)
         {
+            //List<ShoppingCart> CartItems = new List<ShoppingCart>();
             using (var connection = new SqlConnection(_connectionString))
             {
                 var cmd = new SqlCommand("spShoppingCartUpdateItem", connection);

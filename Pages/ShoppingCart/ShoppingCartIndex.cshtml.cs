@@ -21,7 +21,7 @@ namespace Dawson_HW4.Pages.ShoppingCart
 
         public void OnGet()
         {
-            string cartID = @User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+            string cartID = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
 
             CartItems = _cartRepository.LoadCartItems(cartID, out decimal total);
 
@@ -31,7 +31,7 @@ namespace Dawson_HW4.Pages.ShoppingCart
 
         public IActionResult OnPost()
         {
-            string cartID = @User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+            string cartID = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
 
             if (ModelState.IsValid)
             {
@@ -42,6 +42,7 @@ namespace Dawson_HW4.Pages.ShoppingCart
                 }
 
                 CartItems = _cartRepository.LoadCartItems(cartID, out decimal total);
+                CartTotal = total;
 
             }
             

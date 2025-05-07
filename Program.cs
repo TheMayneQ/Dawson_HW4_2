@@ -47,6 +47,7 @@ namespace Dawson_HW4
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapRazorPages();

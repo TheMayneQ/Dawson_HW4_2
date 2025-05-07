@@ -8,5 +8,9 @@ namespace Dawson_HW4.Data
 
         Product GetProductDetails(int productID);
 
+        void AddProduct(Product product);
+        void DeleteProduct(int productID);
+        List<Product> GetAllProducts();
+
     }
 }
