@@ -1,0 +1,140 @@
+﻿@page
+@model Dawson_HW4.Pages.Admin.AddProductModel
+@{
+    ViewData["Title"] = "Add New Product";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>Manually enter all product details, including Category ID and Supplier ID.</p>
+<hr />
+
+<div class="row">
+    <div class="col-md-7">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            @Html.AntiForgeryToken()
+
+            <div class="form-group mb-2">
+                <label asp-for="NewProduct.ProductCode" class="control-label"></label>
+                <input asp-for="NewProduct.ProductCode" class="form-control" />
+                <span asp-validation-for="NewProduct.ProductCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label asp-for="NewProduct.ProductName" class="control-label"></label>
+                <input asp-for="NewProduct.ProductName" class="form-control" />
+                <span asp-validation-for="NewProduct.ProductName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label asp-for="NewProduct.Description" class="control-label"></label>
+                <textarea asp-for="NewProduct.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="NewProduct.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label asp-for="NewProduct.CategoryID" class="control-label">Category ID</label>
+                <input asp-for="NewProduct.CategoryID" type="number" class="form-control" />
+                <span asp-validation-for="NewProduct.CategoryID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label asp-for="NewProduct.SupplierID" class="control-label">Supplier ID</label>
+                <input asp-for="NewProduct.SupplierID" type="number" class="form-control" />
+                <span asp-validation-for="NewProduct.SupplierID" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-2">
+                        <label asp-for="NewProduct.StandardCost" class="control-label"></label>
+                        <input asp-for="NewProduct.StandardCost" type="number" step="0.0001" class="form-control" />
+                        <span asp-validation-for="NewProduct.StandardCost" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-2">
+                        <label asp-for="NewProduct.ListPrice" class="control-label"></label>
+                        <input asp-for="NewProduct.ListPrice" type="number" step="0.0001" class="form-control" />
+                        <span asp-validation-for="NewProduct.ListPrice" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-2">
+                        <label asp-for="NewProduct.AvailableQty" class="control-label"></label>
+                        <input asp-for="NewProduct.AvailableQty" type="number" class="form-control" />
+                        <span asp-validation-for="NewProduct.AvailableQty" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-2">
+                        <label asp-for="NewProduct.ProdImage" class="control-label">Product Image URL (Optional)</label>
+                        <input asp-for="NewProduct.ProdImage" class="form-control" placeholder="e.g., /images/products/yourimage.jpg" />
+                        <span asp-validation-for="NewProduct.ProdImage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-2">
+                        <label asp-for="NewProduct.ReorderLevel" class="control-label">Reorder Level (Optional)</label>
+                        <input asp-for="NewProduct.ReorderLevel" type="number" class="form-control" />
+                        <span asp-validation-for="NewProduct.ReorderLevel" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-2">
+                        <label asp-for="NewProduct.TargetLevel" class="control-label">Target Level (Optional)</label>
+                        <input asp-for="NewProduct.TargetLevel" type="number" class="form-control" />
+                        <span asp-validation-for="NewProduct.TargetLevel" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-check mt-2 mb-2">
+                <input class="form-check-input" asp-for="NewProduct.Discontinued" />
+                <label class="form-check-label" asp-for="NewProduct.Discontinued">@Html.DisplayNameFor(model => model.NewProduct.Discontinued)</label>
+            </div>
+
+            <div class="form-group form-check mb-3">
+                <input class="form-check-input" asp-for="NewProduct.Reordered" />
+                <label class="form-check-label" asp-for="NewProduct.Reordered">@Html.DisplayNameFor(model => model.NewProduct.Reordered)</label>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Create Product" class="btn btn-primary" />
+                <a asp-page="./ManageProducts" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Message) && Model.Message.Contains("successfully"))
+{
+    <div class="alert alert-success mt-3 Fixed-message">@Model.Message</div>
+}
+else if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-danger mt-3 Fixed-message">@Model.Message</div>
+}
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <style>
+        .Fixed-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050; 
+            min-width: 300px; 
+        }
+    </style>
+}
